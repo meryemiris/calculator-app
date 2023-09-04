@@ -1,41 +1,54 @@
 import styles from "../styles/Buttons.module.css";
 import Button from "./Button";
 
-const Buttons = () => {
-  const numbersSets = [[9, 8, 7], [6, 5, 4], [3, 2, 1], ["."]];
+interface ButtonsProps {
+  setDisplayValue: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const Buttons: React.FC<ButtonsProps> = ({ setDisplayValue }) => {
+  const buttonLayout = [
+    ["C", "+/-", "%", "÷"],
+    [7, 8, 9, "x"],
+    [4, 5, 6, "-"],
+    [1, 2, 3, "+"],
+    [0, ".", "="],
+  ].flat();
+
+  const handleButtonClick = (value: string) => {
+    if (value === "C") {
+      setDisplayValue("");
+    } else if (value === "+/-") {
+      setDisplayValue((prevValue) =>
+        prevValue.startsWith("-") ? prevValue.slice(1) : "-" + prevValue
+      );
+    } else if (value === "%") {
+      setDisplayValue((prevValue) => (parseFloat(prevValue) / 100).toString());
+    } else {
+      setDisplayValue((prevValue) => prevValue + value);
+    }
+  };
 
   return (
-    <div className={styles.buttons}>
-      <button className={styles.operationTop}>C</button>
-      <button className={styles.operationTop}>+/-</button>
-      <button className={styles.operationTop}>%</button>
-      <button className={styles.operation}>÷</button>
-
-      {numbersSets[0].map((number) => (
-        <Button key={number} value={number.toString()} />
-      ))}
-
-      <button className={styles.operation}>x</button>
-
-      {numbersSets[1].map((number) => (
-        <Button key={number} value={number.toString()} />
-      ))}
-
-      <button className={styles.operation}>-</button>
-
-      {numbersSets[2].map((number) => (
-        <Button key={number} value={number.toString()} />
-      ))}
-
-      <button className={styles.operation}>+</button>
-      <button className={styles.zero}>0</button>
-
-      {numbersSets[3].map((number) => (
-        <Button key={number} value={number.toString()} />
-      ))}
-
-      <button className={styles.operation}>=</button>
-    </div>
+    <>
+      <div className={styles.buttons}>
+        {buttonLayout.map((value) => (
+          <Button
+            key={value}
+            value={value.toString()}
+            onClick={() => handleButtonClick(value.toString())}
+            customClassName={
+              ["÷", "x", "-", "+", "="].includes(value.toString())
+                ? styles.operation
+                : ["C", "+/-", "%", "÷"].includes(value.toString())
+                ? styles.operationTop
+                : value === 0
+                ? styles.zero
+                : styles.button
+            }
+          />
+        ))}
+      </div>
+    </>
   );
 };
 

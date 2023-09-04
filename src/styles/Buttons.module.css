@@ -2,7 +2,24 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
+}
 
+.button {
+    width: 70px;
+    height: 70px;
+    font-size: 28px;
+    text-align: center;
+    line-height: 60px;
+    background-color: #444;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: #fff;
+}
+
+.button:hover {
+    background-color: #565555;
 }
 
 .operation {
