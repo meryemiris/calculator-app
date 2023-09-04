@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <div className="calculator">
-        <div className="display">{result !== 0 ? result : display}</div>
+        <div className="display">{display !== "" ? display : result}</div>
         <Buttons
           setDisplay={setDisplay}
           setResult={setResult}
