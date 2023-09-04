@@ -3,17 +3,17 @@ import Buttons from "./component/Buttons";
 import { useState } from "react";
 
 function App() {
-  const [displayValue, setDisplayValue] = useState("");
+  const [display, setDisplay] = useState("");
   const [result, setResult] = useState<string | number>(0);
 
   return (
     <>
       <div className="calculator">
-        <div className="display">{result !== 0 ? result : displayValue}</div>
+        <div className="display">{result !== 0 ? result : display}</div>
         <Buttons
-          setDisplayValue={setDisplayValue}
+          setDisplay={setDisplay}
           setResult={setResult}
-          input={displayValue}
+          input={display}
         />
       </div>
     </>

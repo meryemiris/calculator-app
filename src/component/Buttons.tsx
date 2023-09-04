@@ -3,16 +3,12 @@ import styles from "../styles/Buttons.module.css";
 import Button from "./Button";
 
 interface ButtonsProps {
-  setDisplayValue: React.Dispatch<React.SetStateAction<string>>;
+  setDisplay: React.Dispatch<React.SetStateAction<string>>;
   setResult: React.Dispatch<React.SetStateAction<string | number>>;
   input: string;
 }
 
-const Buttons: React.FC<ButtonsProps> = ({
-  setDisplayValue,
-  setResult,
-  input,
-}) => {
+const Buttons: React.FC<ButtonsProps> = ({ setDisplay, setResult, input }) => {
   const buttonLayout = [
     ["C", "+/-", "%", "/"],
     [7, 8, 9, "*"],
@@ -25,22 +21,22 @@ const Buttons: React.FC<ButtonsProps> = ({
     if (value === "=") {
       try {
         const result = calculate(input);
-        setDisplayValue(result.toString());
+        setDisplay(result.toString());
         setResult(result);
       } catch (error) {
         setResult("Error");
       }
     } else if (value === "C") {
-      setDisplayValue("");
+      setDisplay("");
       setResult(0);
     } else if (value === "+/-") {
-      setDisplayValue((prevValue) =>
+      setDisplay((prevValue) =>
         prevValue.startsWith("-") ? prevValue.slice(1) : "-" + prevValue
       );
     } else if (value === "%") {
-      setDisplayValue((prevValue) => (parseFloat(prevValue) / 100).toString());
+      setDisplay((prevValue) => (parseFloat(prevValue) / 100).toString());
     } else {
-      setDisplayValue((prevValue) => prevValue + value);
+      setDisplay((prevValue) => prevValue + value);
     }
     console.log(value);
   }

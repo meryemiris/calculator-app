@@ -8,7 +8,7 @@
 .operations,
 .modifiers,
 .zero {
-    color: white;
+    color: #fff;
     font-size: 28px;
     line-height: 70px;
     text-align: center;
@@ -19,7 +19,6 @@
 }
 
 .button {
-    /* color: #fff; */
     background-color: #444;
     border-radius: 50%;
 }
@@ -29,7 +28,6 @@
 }
 
 .operations {
-    /* color: #fff; */
     background-color: #ffa500;
     font-weight: bold;
     border-radius: 50%;
