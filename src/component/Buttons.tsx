@@ -114,9 +114,9 @@ const Buttons: React.FC<ButtonsProps> = ({
             onClick={() => handleButtonClick(value.toString())}
             customClassName={
               ["/", "*", "-", "+", "="].includes(value.toString())
-                ? styles.operation
+                ? styles.operations
                 : ["C", "+/-", "%"].includes(value.toString())
-                ? styles.operationTop
+                ? styles.modifiers
                 : value === 0
                 ? styles.zero
                 : styles.button
