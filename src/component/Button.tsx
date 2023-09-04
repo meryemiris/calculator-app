@@ -1,7 +1,7 @@
 import React from "react";
 
 interface ButtonProps {
-  value: string;
+  value: string ;
   onClick: () => void;
   customClassName: string;
 }
