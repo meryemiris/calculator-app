@@ -20,7 +20,9 @@ const Buttons: React.FC<ButtonsProps> = ({ setDisplay, input }) => {
       try {
         const sanitizedInput = input.replace(/[^0-9+\-*/().]/g, "");
         const result = calculate(sanitizedInput);
-        setDisplay(result.toString());
+        const formattedResult =
+          Math.abs(result) < 0.01 ? result.toString() : result.toFixed(2);
+        setDisplay(formattedResult);
       } catch (error) {
         setDisplay("Error");
       }
