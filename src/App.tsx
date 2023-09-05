@@ -4,7 +4,6 @@ import { useState } from "react";
 
 function App() {
   const [display, setDisplay] = useState("");
-  // const [result, setResult] = useState<string | number>(0);
 
   return (
     <>

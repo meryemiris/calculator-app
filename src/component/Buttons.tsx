@@ -1,10 +1,8 @@
-import React from "react";
 import styles from "../styles/Buttons.module.css";
 import Button from "./Button";
 
 interface ButtonsProps {
   setDisplay: React.Dispatch<React.SetStateAction<string>>;
-  // setResult: React.Dispatch<React.SetStateAction<string | number>>;
   input: string;
 }
 
@@ -20,11 +18,9 @@ const Buttons: React.FC<ButtonsProps> = ({ setDisplay, input }) => {
   function handleButtonClick(value: string) {
     if (value === "=") {
       try {
-        // Ensure input is a valid expression (e.g., "2+3*4")
         const sanitizedInput = input.replace(/[^0-9+\-*/().]/g, "");
         const result = calculate(sanitizedInput);
         setDisplay(result.toString());
-        // setResult(result);
       } catch (error) {
         setDisplay("Error");
       }
@@ -37,8 +33,12 @@ const Buttons: React.FC<ButtonsProps> = ({ setDisplay, input }) => {
     } else if (value === "%") {
       setDisplay((prevValue) => (parseFloat(prevValue) / 100).toString());
     } else if (value === ".") {
-      if (!input.includes(".") && input !== "") {
+      const lastToken = input.split(/[-+*/]/).pop();
+
+      if (lastToken && !lastToken.includes(".") && input !== "") {
         setDisplay((prevValue) => prevValue + ".");
+      } else if (lastToken === "") {
+        setDisplay((prevValue) => prevValue + "0.");
       }
     } else {
       setDisplay((prevValue) => prevValue + value);
