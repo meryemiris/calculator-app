@@ -8,33 +8,41 @@
 .operations,
 .modifiers,
 .zero {
-    color: #fff;
+    color: #5a189a;
     font-size: 28px;
     line-height: 70px;
     text-align: center;
     border: none;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
     cursor: pointer;
     transition: background-color 0.3s ease;
 
 }
 
 .button {
-    background-color: #444;
+    background-color: #b0c4b1;
     border-radius: 50%;
 }
 
+.zero {
+    grid-column: span 2;
+    background-color: #b0c4b1;
+    border-radius: 50px;
+}
+
+.zero:hover,
 .button:hover {
-    background-color: #565555;
+    background-color: #9ecaa0;
 }
 
 .operations {
-    background-color: #ffa500;
+    background-color: #edafb8;
     font-weight: bold;
     border-radius: 50%;
 }
 
 .operations:hover {
-    background-color: #febb3f;
+    background-color: #f4a1ad;
 }
 
 .operations:active {
@@ -43,22 +51,12 @@
 }
 
 .modifiers {
-    color: #000;
-    background-color: #a7a5a5;
+    /* color: #000; */
+    background-color: #b8bedd;
     font-weight: bold;
     border-radius: 50%;
 }
 
 .modifiers:hover {
-    background-color: #cbc7c7;
-}
-
-.zero {
-    grid-column: span 2;
-    background-color: #444;
-    border-radius: 50px;
-}
-
-.zero:hover {
-    background-color: #565555;
+    background-color: #abb6e4;
 }
