@@ -4,11 +4,11 @@ import Button from "./Button";
 
 interface ButtonsProps {
   setDisplay: React.Dispatch<React.SetStateAction<string>>;
-  setResult: React.Dispatch<React.SetStateAction<string | number>>;
+  // setResult: React.Dispatch<React.SetStateAction<string | number>>;
   input: string;
 }
 
-const Buttons: React.FC<ButtonsProps> = ({ setDisplay, setResult, input }) => {
+const Buttons: React.FC<ButtonsProps> = ({ setDisplay, input }) => {
   const buttonLayout = [
     ["C", "+/-", "%", "/"],
     [7, 8, 9, "*"],
@@ -20,32 +20,39 @@ const Buttons: React.FC<ButtonsProps> = ({ setDisplay, setResult, input }) => {
   function handleButtonClick(value: string) {
     if (value === "=") {
       try {
-        const result = calculate(input);
+        // Ensure input is a valid expression (e.g., "2+3*4")
+        const sanitizedInput = input.replace(/[^0-9+\-*/().]/g, "");
+        const result = calculate(sanitizedInput);
         setDisplay(result.toString());
-        setResult(result);
+        // setResult(result);
       } catch (error) {
-        setResult("Error");
+        setDisplay("Error");
       }
     } else if (value === "C") {
       setDisplay("");
-      setResult(0);
     } else if (value === "+/-") {
       setDisplay((prevValue) =>
         prevValue.startsWith("-") ? prevValue.slice(1) : "-" + prevValue
       );
     } else if (value === "%") {
       setDisplay((prevValue) => (parseFloat(prevValue) / 100).toString());
+    } else if (value === ".") {
+      if (!input.includes(".") && input !== "") {
+        setDisplay((prevValue) => prevValue + ".");
+      }
     } else {
       setDisplay((prevValue) => prevValue + value);
     }
-    console.log(value);
   }
 
   function calculate(tokens: string): number {
     const values: number[] = [];
     const ops: string[] = [];
 
-    for (const token of tokens) {
+    const tokenizedInput =
+      tokens.match(/(\d+(\.\d+)?|[\\+\-\\*\\/\\(\\)])|./g) || [];
+
+    for (const token of tokenizedInput) {
       if (token === "+" || token === "-" || token === "*" || token === "/") {
         while (
           ops.length > 0 &&

@@ -4,17 +4,13 @@ import { useState } from "react";
 
 function App() {
   const [display, setDisplay] = useState("");
-  const [result, setResult] = useState<string | number>(0);
+  // const [result, setResult] = useState<string | number>(0);
 
   return (
     <>
       <div className="calculator">
-        <div className="display">{display !== "" ? display : result}</div>
-        <Buttons
-          setDisplay={setDisplay}
-          setResult={setResult}
-          input={display}
-        />
+        <div className="display">{display}</div>
+        <Buttons setDisplay={setDisplay} input={display} />
       </div>
     </>
   );
