@@ -1,18 +1,7 @@
-import "./App.css";
-import Buttons from "./component/Buttons";
-import { useState } from "react";
+import Calculator from "./component/Calculator";
 
 function App() {
-  const [display, setDisplay] = useState("");
-
-  return (
-    <>
-      <div className="calculator">
-        <div className="display">{display}</div>
-        <Buttons setDisplay={setDisplay} input={display} />
-      </div>
-    </>
-  );
+  return <Calculator />;
 }
 
 export default App;

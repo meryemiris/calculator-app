@@ -1,10 +1,30 @@
+.calculator {
+    width: 350px;
+    background-color: #9c89b8;
+    border-radius: 20px;
+    padding: 30px 20px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+}
+
+
+.input {
+    height: 36px;
+    font-size: 36px;
+    text-align: right;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #dedbd2;
+    border-radius: 10px;
+    color: #3c096c;
+}
+
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
 }
 
-.button,
+button,
 .operations,
 .modifiers,
 .zero {
@@ -19,7 +39,7 @@
 
 }
 
-.button {
+button {
     background-color: #b0c4b1;
     border-radius: 50%;
 }
@@ -31,7 +51,7 @@
 }
 
 .zero:hover,
-.button:hover {
+button:hover {
     background-color: #9ecaa0;
 }
 
@@ -51,7 +71,7 @@
 }
 
 .modifiers {
-    /* color: #000; */
+
     background-color: #b8bedd;
     font-weight: bold;
     border-radius: 50%;
