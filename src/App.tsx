@@ -1,7 +1,13 @@
 import Calculator from "./component/Calculator";
+import Settings from "./component/Settings";
 
 function App() {
-  return <Calculator />;
+  return (
+    <>
+      <Settings />
+      <Calculator />
+    </>
+  );
 }
 
 export default App;

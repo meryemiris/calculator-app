@@ -74,7 +74,7 @@ const Buttons: React.FC = () => {
                 ? styles.modifiers
                 : value === 0
                 ? styles.zero
-                : styles.button
+                : styles.calculatorButton
             }
           >
             {value}
