@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 import styles from "./Calculator.module.css";
-import Button from "./Button";
 
 const buttonLayout = [
   ["C", "+/-", "%", "/"],
@@ -115,11 +114,11 @@ const Buttons: React.FC = () => {
       <div className={styles.input}>{input}</div>
       <div className={styles.buttons}>
         {buttonLayout.map((value) => (
-          <Button
+          <button
             key={value}
             value={value.toString()}
             onClick={() => handleButtonClick(value.toString())}
-            customClassName={
+            className={
               ["/", "*", "-", "+", "="].includes(value.toString())
                 ? styles.operations
                 : ["C", "+/-", "%"].includes(value.toString())
@@ -128,7 +127,9 @@ const Buttons: React.FC = () => {
                 ? styles.zero
                 : styles.button
             }
-          />
+          >
+            {value}
+          </button>
         ))}
       </div>
     </div>
